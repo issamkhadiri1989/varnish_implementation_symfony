@@ -13,8 +13,14 @@ class CacheController extends AbstractController
     #[Cache(public: true, maxage: 3600, mustRevalidate: true)]
     public function index(): Response
     {
-        return $this->render('cache/index.html.twig', [
+        $response =  $this->render('cache/index.html.twig', [
             'controller_name' => 'CacheController',
         ]);
+
+        $response->setPublic();
+        $response->setMaxAge(7200);
+        $response->setSharedMaxAge(7200);
+
+        return $response;
     }
 }

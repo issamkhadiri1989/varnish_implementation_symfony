@@ -29,7 +29,8 @@ services:
     depends_on:
       - nginx
     build: ./docker-config/varnish
+
     links:
       - nginx
     ports:
-      - 5002:6081
+      - 8080:6081
